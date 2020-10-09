@@ -17,21 +17,7 @@ export default createMuiTheme({
     },
   },
   typography: {
-    heroH1: {
-      color: "white",
-      fontFamily:"Times-New-Roman"
-    },
-    heroH2: {
-      color: "white",
-      fontWeight: "200",
-      fontSize:"3rem",
-      fontFamily:"Times-New-Roman"
-    },
-    heroH3: {
-      color: "white",
-      textAlign: "right",
-      fontFamily:"Times-New-Roman"
-    }
+    
   },
   
 });

@@ -4,17 +4,14 @@ import thunk from 'redux-thunk';
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './reducers';
-import { ThemeProvider } from '@material-ui/styles';
-import theme from './components/theme/Theme';
 
 
-import LandingPage from './components/LandingPage';
+
+import App from './components/App';
 
 const store = createStore(reducers,applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
-    <ThemeProvider theme={theme}>
-    <LandingPage/>
-    </ThemeProvider>
+    <App/>
   </Provider>, document.querySelector('#root'));
