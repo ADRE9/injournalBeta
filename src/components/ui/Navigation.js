@@ -7,11 +7,10 @@ import { makeStyles } from '@material-ui/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton'; 
-import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
-import MoreIcon from '@material-ui/icons/MoreVert';
 import { Link } from 'react-router-dom';
+import MobileNavigation from '../ui/MobileNavigation';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/styles';
 
 import logo from '../../assets/img/svg/logo.svg';
 
@@ -57,6 +56,7 @@ const useStyles = makeStyles(theme =>(
 const Header = (props) => {
 
   const classes = useStyles();
+  const theme = useTheme();
   const [width, setWidth] = useState(null);
   const [value, setValue] = useState(0);
 
@@ -82,11 +82,12 @@ const Header = (props) => {
 
   useEffect(() => {
     setWidth(window.innerWidth);
-  },[width]);
+  }, [width]);
+  
+  const matches = useMediaQuery(theme.breakpoints.down('xs'));
 
   const renderNavigation = () => {
-  
-    if (width > 540) {
+    if (!matches) {
       return (
         <React.Fragment>
             <CssBaseline />
@@ -102,7 +103,7 @@ const Header = (props) => {
                   >
                     <img src={logo} alt="logo" />
                   </Button>
-                <Tabs
+                  <Tabs
                     indicatorColor="primary"
                     onChange={handleChange}
                     value={value}
@@ -154,21 +155,7 @@ const Header = (props) => {
     } else {
       return (
         <React.Fragment>
-          <AppBar
-          position="fixed" color="primary"
-          className={classes.appBarBottom}>
-            <Toolbar>
-              <IconButton         edge="start" color="inherit"    aria-label="open drawer">
-                <MenuIcon />
-              </IconButton>
-              <IconButton color="inherit">
-                <SearchIcon />
-              </IconButton>
-              <IconButton edge="end" color="inherit">
-                <MoreIcon />
-              </IconButton>
-            </Toolbar>
-          </AppBar>
+          <MobileNavigation/>
         </React.Fragment>
       )
     }

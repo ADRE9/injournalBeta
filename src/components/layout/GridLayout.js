@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Hidden from '@material-ui/core/Hidden';
 /*import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
@@ -13,7 +14,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow:1,
   },
   grid: {
-    marginTop:"0",
+    marginTop: "0",
+    paddingTop:"1em",
+    paddingBottom:"3em",
     minHeight:"90vh",
     backgroundColor:"transparent",
   },
@@ -23,10 +26,13 @@ const useStyles = makeStyles((theme) => ({
   gridItem: {
     margin:0,
     backgroundColor: "transparent",
-    //border:"1px red solid"
+    [theme.breakpoints.down('xs')]: {
+      maxHeight:"30vh"
+    },
+    border:"1px red solid"
   },
   gridSubitem: {
-    //border:"1px blue solid"
+    border:"1px blue solid"
   },
   gridSizing1: {
     margin:0,
@@ -65,14 +71,16 @@ const GridLayout = (props) => {
         >
           {props.children[0]}
         </Grid>
-        <Grid
-          className={classes.gridItem}
-          xs={12}
-          sm={3}
-          item
-        >
-          {props.children[0]}
-        </Grid>
+        <Hidden xsDown>
+          <Grid
+            className={classes.gridItem}
+            xs={12}
+            sm={3}
+            item
+          > 
+            {props.children[1]}
+          </Grid>
+        </Hidden>
       </Grid>
       <Grid
         className={classes.gridSizing2}
@@ -92,7 +100,7 @@ const GridLayout = (props) => {
             className={classes.gridSubitem}
             item
             >
-              {props.children[0]}
+              {props.children[2]}
             </Grid>
           </Grid>
         <Grid
@@ -109,7 +117,7 @@ const GridLayout = (props) => {
             sm={6}
             item
           >
-            {props.children[0]}
+            {props.children[3]}
           </Grid>
           <Grid
             className={classes.gridSubitem}
@@ -117,7 +125,7 @@ const GridLayout = (props) => {
             sm={6}
             item
           >
-            {props.children[0]}
+            {props.children[4]}
           </Grid>
           <Grid
             className={classes.gridSubitem}
@@ -125,7 +133,7 @@ const GridLayout = (props) => {
             sm={8}
             item
           >
-            {props.children[0]}
+            {props.children[5]}
           </Grid>
           <Grid
             className={classes.gridSubitem}
@@ -133,7 +141,7 @@ const GridLayout = (props) => {
             sm={4}
             item
           >
-            {props.children[0]}
+            {props.children[6]}
           </Grid>
         </Grid>
       </Grid>
@@ -155,7 +163,7 @@ const GridLayout = (props) => {
             className={classes.gridSubitem}
             item
             >
-              {props.children[0]}
+              {props.children[7]}
             </Grid>
           </Grid>
         <Grid
@@ -172,7 +180,7 @@ const GridLayout = (props) => {
             sm={6}
             item
           >
-            {props.children[0]}
+            {props.children[8]}
           </Grid>
           <Grid
             className={classes.gridSubitem}
@@ -180,7 +188,7 @@ const GridLayout = (props) => {
             sm={6}
             item
           >
-            {props.children[0]}
+            {props.children[9]}
           </Grid>
           <Grid
             className={classes.gridSubitem}
@@ -188,7 +196,7 @@ const GridLayout = (props) => {
             sm={8}
             item
           >
-            {props.children[0]}
+            {props.children[10]}
           </Grid>
           <Grid
             className={classes.gridSubitem}
@@ -196,7 +204,7 @@ const GridLayout = (props) => {
             sm={4}
             item
           >
-            {props.children[0]}
+            {props.children[11]}
           </Grid>
         </Grid>
         <Grid
@@ -212,7 +220,7 @@ const GridLayout = (props) => {
             className={classes.gridSubitem}
             item
             >
-              {props.children[0]}
+              {props.children[12]}
             </Grid>
           </Grid>
           <Grid
@@ -227,7 +235,7 @@ const GridLayout = (props) => {
             className={classes.gridSubitem}
             item
             >
-              {props.children[0]}
+              {props.children[13]}
             </Grid>
           </Grid>
       </Grid>

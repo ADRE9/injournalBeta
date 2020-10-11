@@ -7,8 +7,9 @@ import withNeumorphism from './withNeumorphism';
 const useStyles = makeStyles(
   theme=> ({
     blogCard: {
-      margin: "4px 4px 0px 4px",
-      height:"100%"
+      margin: "8px 8px 0px 8px",
+      height: "100%",
+      
     }
   })
 );
@@ -22,7 +23,7 @@ const BlogCard = (props) => {
       className={classes.blogCard}
       style={props.style}>
       <h1>
-        hello
+        
      </h1>
     </Card>
    );

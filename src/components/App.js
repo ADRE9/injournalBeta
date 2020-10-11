@@ -1,5 +1,5 @@
-import React from 'react';
-import Header from './ui/Header';
+import React, { Suspense, lazy } from 'react';
+import Header from './ui/Navigation';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/styles';
 
@@ -7,7 +7,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import theme from './theme/Theme';
 import Home from './pages/Home';
 
-
+const PostCreate = lazy(() => import('./pages/PostCreate'));
 
 class App extends React.Component {
 
@@ -42,8 +42,13 @@ class App extends React.Component {
               <Route
                 exact
                 path="/about" component={() => <div>
-                About
-              </div>}/>
+                  About
+              </div>} />
+              <Suspense fallback={<div>Loading...</div>}>
+                <Route
+                exact
+                path="/createpost" component={PostCreate}/>
+              </Suspense>
             </Switch>
           </BrowserRouter>
         </ThemeProvider>
